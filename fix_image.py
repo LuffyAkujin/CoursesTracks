@@ -1,15 +1,16 @@
-#!/usr/bin/env python
+!/usr/bin/env python3
+
 import os, sys
 from PIL import Image
 
-for infile in sys.argv[1:]:
- f, e = os.path.splittext(infile)
- outfile = f + ".jpg"
+size = (128, 128)
+
+for infile in os.listdir():
+ outfile = os.path.splitext(infile)[0]
  if infile != outfile:
   try:
-   with Image.open(infile) as im:
-    im.resize((128, 128))
-    im.rotate(-90)
-    im.save(outfile)
+   with Image.open(infile).convert("RGB") as im:
+    im.resize(size)
+    im.rotate(270).save("/home/**puttheusername**/opt/icons" + outfile, "JPEG")
   except OSError:
-   print("Something is wrong cannot convert and resize", infile)
+   print("FUCK OFF")
